@@ -1,0 +1,37 @@
+:root {
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  line-height: 0;
+}
+canvas {
+  border: black 1px solid;
+  /* width: 90vmin; */
+  /* height: 90vmin; */
+  height: 95%;
+  max-width: 95%;
+  object-fit: cover;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+p {
+  position: absolute;
+  left: 0;
+  line-height: 1em;
+  width: 10em;
+  top: 0;
+  margin: 25px;
+  background: rgba(255,255,255,0.5)
+}
+img {
+  position: absolute;
+  left: 0vh;
+  top: 0;
+  height: 90vmin;
+  display: none;
+}
+#scanImg {
+  /* display: none; */
+}
