@@ -4,6 +4,7 @@ let scanC = document.getElementById("scanImg")
 let scanCtx = scanC.getContext('2d')
 
 let img = document.getElementById('image')
+img.crossOrigin = "Anonymous";
 
 let colDisp = document.getElementById('next-color')
 
@@ -159,5 +160,24 @@ function newImg(){
 		console.log(`skipped image (ID: ${id})`)
 		id = Math.round(Math.random()*100);
 	}
-	img.src = `https://picsum.photos/id/${id}/${size[0]}/${size[1]}`
+	// img.src = `https://picsum.photos/id/${id}/${size[0]}/${size[1]}`
+	toDataURL(`https://picsum.photos/id/${id}/${size[0]}/${size[1]}`, function(dataUrl) {
+	  // scanCtx.drawImage(dataUrl,size[0],size[1])
+		img.src = dataUrl
+	})
+}
+
+
+function toDataURL(url, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function() {
+    var reader = new FileReader();
+    reader.onloadend = function() {
+      callback(reader.result);
+    }
+    reader.readAsDataURL(xhr.response);
+  };
+  xhr.open('GET', url);
+  xhr.responseType = 'blob';
+  xhr.send();
 }
